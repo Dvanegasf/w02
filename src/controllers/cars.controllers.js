@@ -31,11 +31,10 @@ const update  = catchError(async (req, res) => {
     const { id } = req.params
     const car = await Car.update(
         req.body,
-        { where: { id }, returing: true }
+        { where: { id }, returning: true }
         )
     if  (car[0] === 0) return res.sendStatus(404)
- console.log(car)
-    return res.json(car)
+    return res.json(car[1][0])
     })
 module.exports = {
     getAll,
